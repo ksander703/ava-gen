@@ -1,0 +1,18 @@
+comp_test:
+  build: .
+  ports:
+    - "5000:5000"
+    - "9090:9090"
+  environment:
+    env: dev
+  volumes:
+    - ./app:/app
+  links:
+    - dnmonster
+    - redis
+
+dnmonster:
+  image: amouat/dnmonster:latest
+
+redis:
+  image: redis
